@@ -41,7 +41,7 @@ export default function Comment({ comment, depth = 0, onAction }) {
       if (!token) throw new Error("You must be logged in to vote.");
 
       const { data } = await axios.post(
-        `http://localhost:4000/api/comments/${comment._id}/vote`,
+        `${import.meta.env.VITE_APP_API_URL}/api/comments/${comment._id}/vote`,
         { value: newVoteValue },
         { headers: { Authorization: "Bearer " + token } }
       );
@@ -65,7 +65,7 @@ export default function Comment({ comment, depth = 0, onAction }) {
 
     try {
         await axios.post(
-            "http://localhost:4000/api/comments",
+            `${import.meta.env.VITE_APP_API_URL}/api/comments`,
             { text: replyText, parent_id: comment._id },
             { headers: { Authorization: "Bearer " + token } }
         );

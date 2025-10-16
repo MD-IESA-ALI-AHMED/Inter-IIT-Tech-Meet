@@ -1,3 +1,5 @@
+console.log("My API URL from Vercel is:", import.meta.env.VITE_APP_API_URL);
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Comment from '../components/Comment.jsx';
@@ -17,7 +19,7 @@ export default function App() {
       return;
     }
     try {
-      await axios.post('http://localhost:4000/api/logout', {}, { headers: { Authorization: 'Bearer ' + token } });
+      await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/logout`, {}, { headers: { Authorization: 'Bearer ' + token } });
     } catch (err) {
       console.warn('Logout request failed:', err);
     }
@@ -28,7 +30,7 @@ export default function App() {
 
   const fetchComments = async () => {
     try {
-      const res = await axios.get('http://localhost:4000/api/comments');
+      const res = await axios.get(`${import.meta.env.VITE_APP_API_URL}/api/comments`);
       setComments(res.data);
     } catch (error) {
       console.error("Failed to fetch comments:", error);
@@ -45,7 +47,7 @@ export default function App() {
     if (!text.trim()) return;
     
     try {
-      await axios.post('http://localhost:4000/api/comments', { text }, { headers: { Authorization: 'Bearer ' + token } });
+      await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/comments`, { text }, { headers: { Authorization: 'Bearer ' + token } });
       setText('');
       fetchComments(); 
     } catch (error) {

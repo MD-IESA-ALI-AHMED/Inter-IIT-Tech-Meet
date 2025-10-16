@@ -25,7 +25,7 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/login", {
+      const res = await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/login`, {
         email,
         password,
       });
@@ -47,13 +47,13 @@ export default function Login() {
     setRegError(null);
     setRegLoading(true);
     try {
-      await axios.post("http://localhost:4000/api/register", {
+      await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/register`, {
         name: regName,
         email: regEmail,
         password: regPassword,
       });
       // auto-login
-      const loginRes = await axios.post("http://localhost:4000/api/login", {
+      const loginRes = await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/login`, {
         email: regEmail,
         password: regPassword,
       });
