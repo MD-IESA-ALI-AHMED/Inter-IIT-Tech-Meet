@@ -83,7 +83,8 @@ export default function Comment({ comment, depth = 0, onAction }) {
         depth > 0 ? "ml-4 lg:ml-6 pl-4 lg:pl-6 border-l-2 border-gray-200" : ""
       }`}
     >
-      <div className="comment bg-zinc-800 p-4 rounded-lg shadow-sm">
+   
+         <div className="comment bg-zinc-800 p-4 rounded-lg shadow-sm">
         <div className="flex items-start space-x-3">
           <img
             src={
@@ -149,7 +150,7 @@ export default function Comment({ comment, depth = 0, onAction }) {
         {isReplying && (
           <div className="reply-box mt-3 pl-12">
             <textarea
-              className="w-full p-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full p-2 text-sm border text-white border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
               placeholder={`Replying to ${comment.user?.name || "Anonymous"}`}
               value={replyText}
               onChange={(e) => setReplyText(e.target.value)}
