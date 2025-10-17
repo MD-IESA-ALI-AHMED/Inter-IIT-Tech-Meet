@@ -30,9 +30,7 @@ export const list = async (req, res) => {
     const enhanced = comments.map((c) => {
       const comment = c.toObject(); 
 
-      
-    const user=comment.user;
-     
+     const user = comment.user;
       const upVoteCount = (comment.upVotes || []).length;
       const downVoteCount = (comment.downVotes || []).length;
       const netVotes = upVoteCount - downVoteCount;
@@ -46,10 +44,16 @@ export const list = async (req, res) => {
           : 0
         : 0;
 
-      
+      console.log( ...comment,
+
+        comment._id.toString(),
+        user,
+        upVoteCount,
+        downVoteCount,
+        netVotes,
+        userVote,)
       return {
         ...comment,
-        user,
         id: comment._id.toString(),
         upVoteCount,
         downVoteCount,

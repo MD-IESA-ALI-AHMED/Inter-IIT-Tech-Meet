@@ -83,7 +83,7 @@ export default function Comment({ comment, depth = 0, onAction }) {
         depth > 0 ? "ml-4 lg:ml-6 pl-4 lg:pl-6 border-l-2 border-gray-200" : ""
       }`}
     >
-   
+   {console.log(comment)}
          <div className="comment bg-zinc-800 p-4 rounded-lg shadow-sm">
         <div className="flex items-start space-x-3">
           <img
