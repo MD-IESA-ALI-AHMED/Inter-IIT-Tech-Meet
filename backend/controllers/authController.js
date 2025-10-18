@@ -12,6 +12,9 @@ export const register = async (req, res) => {
     if (existing) return res.status(400).json({ message: 'Email exists' });
     const hash = bcrypt.hashSync(password, 8);
     const user = await User.create({ name, email, passwordHash: hash, avatar: `https://i.pravatar.cc/40?u=${Date.now()}` });
+    console.log("HI I am ",user);
+    const users=await User.find();
+    console.log(users)
     res.json({ id: user._id, name: user.name, email: user.email, avatar: user.avatar });
   } catch (err) {
     console.error(err);
